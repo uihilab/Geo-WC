@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="module" src="./lib/test.js"></script>
-        <script type="module" src="shadowDOM.js"></script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script type="module" src="./lib/test.js"></script> -->
+    <!-- <script type="module" src="shadowDOM.js"></script> -->
+    <script type="module" src="./lib/usgs/usgsComponent.js"></script>
+    <script type="module" src="./lib/visual/dataTableComponent.js"></script>
+    <script type="module" src="./lib/visual/graphComponent.js"></script>
     <title>test</title>
-    </head>
-    <body>
-        <div id="host"></div>
-        <span>I'm not in the shadow DOM</span>
-        <test-component></test-component>
-    </body>
+</head>
+
+<template id="graph-component-template">
+    <div>This is Graph Component</div>
+</template>
+<template id="data-table-component-template">
+    <div>This is Data Table Component</div>
+    <div id="jsonData"></div>
+</template>
+<template id="usgs-component-template">
+    Here is my main component
+    <slot name="subComponent"></slot>
+</template>
+
+<body>
+    <div id="host"></div>
+    <span>I'm not in the shadow DOM</span>
+    <data-table-component></data-table-component>
+    <usgs-component>
+        <data-table-component slot="subComponent">
+        </data-table-component>
+        <!-- <graph-component slot="subComponent">
+        </graph-component> -->
+    </usgs-component>
+
+    <!-- <test-component></test-component> -->
+</body>
+
 </html>
