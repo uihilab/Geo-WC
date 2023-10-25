@@ -5,17 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Include Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- <script type="module" src="./lib/test.js"></script> -->
     <!-- <script type="module" src="shadowDOM.js"></script> -->
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
-    <script type="module" src="./lib/visual/dataTableComponent.js"></script>
-    <script type="module" src="./lib/visual/graphComponent.js"></script>
+    <script type="module" src="./lib/visualize/dataTableComponent.js"></script>
+    <script type="module" src="./lib/visualize/graphComponent.js"></script>
     <title>test</title>
 </head>
 
-<template id="graph-component-template">
-    <div>This is Graph Component</div>
-</template>
+<canvas id="graphic"><div>This is Grafic Canvas</div></canvas>
 <template id="data-table-component-template">
     <div>This is Data Table Component</div>
     <div id="jsonData"></div>
@@ -29,10 +30,10 @@
     <div id="host"></div>
     <!-- <data-table-component></data-table-component> -->
     <usgs-component>
-        <data-table-component slot="subComponent">
-        </data-table-component>
-        <!-- <graph-component slot="subComponent">
-        </graph-component> -->
+        <!-- <data-table-component slot="subComponent">
+        </data-table-component> -->
+        <graph-component slot="subComponent">
+        </graph-component> 
     </usgs-component>
 
     <!-- <test-component></test-component> -->
