@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,27 +12,71 @@
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
     <script type="module" src="./lib/visualize/dataTableComponent.js"></script>
     <script type="module" src="./lib/visualize/graphComponent.js"></script>
-    <title>test</title>
+    <title>GeoWebComponent</title>
+
 </head>
 
-<canvas id="graphic"><div>This is Grafic Canvas</div></canvas>
-<template id="data-table-component-template">
-    <div>This is Data Table Component</div>
+<template id="dynamic-component-template">
     <div id="jsonData"></div>
 </template>
-<template id="usgs-component-template">
-    Here is my main component
+
+<template id="usgs-component-template"> 
+    <form>
+        <label for="url">Source URL:</label>
+        <input type="url" id="source_url" required>
+        <br><br>
+
+        <label for="sdate">Start Date:</label>
+        <input type="date" id="start_date" required>
+        <br><br>
+
+        <label for="fdate">Finish Date:</label>
+        <input type="date" id="finish_date" required>
+        <br><br>
+
+        <button id="captureScreenshot">Capture Screenshot</button>
+    </form>
+
+    <script>
+
+        // const captureButton = document.getElementById('captureScreenshot');
+        // const screenshotContainer = document.getElementById('screenshotContainer');
+
+        // captureButton.addEventListener('click', () => {
+
+        //     const sourceUrl = document.getElementById('source_url').value;
+        //     const startDate = document.getElementById('start_date').value;
+        //     const finishDate = document.getElementById('finish_date').value;
+
+        //     sourceUrl.textContent = sourceUrl;
+        //     startDate.textContent = startDate;
+        //     finishDate.textContent = finishDate;
+        //     // Create a screenshot using html2canvas
+        // });
+    </script>
     <slot name="subComponent"></slot>
 </template>
 
+<template id="fema-component-template">
+
+    <slot name="subComponent"></slot>
+</template>
+
+<div id="screenshotContainer"></div>
+
 <body>
+    
+
     <div id="host"></div>
     <!-- <data-table-component></data-table-component> -->
-    <usgs-component>
-        <!-- <data-table-component slot="subComponent">
-        </data-table-component> -->
-        <graph-component slot="subComponent">
-        </graph-component> 
+    <usgs-component startDate="10/10/2023" endDate="10/10/2023">
+        
+        <data-table-component slot="subComponent">
+
+        </data-table-component>
+        
+        <!--  <graph-component slot="subComponent">
+        </graph-component> -->
     </usgs-component>
 
     <!-- <test-component></test-component> -->
