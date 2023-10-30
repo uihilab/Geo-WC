@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Include Chart.js via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- <script type="module" src="./lib/test.js"></script> -->
     <!-- <script type="module" src="shadowDOM.js"></script> -->
@@ -20,7 +21,7 @@
     <div id="jsonData"></div>
 </template>
 
-<template id="usgs-component-template"> 
+<template id="usgs-component-template">
     <form>
         <label for="url">Source URL:</label>
         <input type="url" id="source_url" required>
@@ -62,24 +63,11 @@
     <slot name="subComponent"></slot>
 </template>
 
-<div id="screenshotContainer"></div>
-
 <body>
-    
-
-    <div id="host"></div>
-    <!-- <data-table-component></data-table-component> -->
     <usgs-component startDate="10/10/2023" endDate="10/10/2023">
-        
-        <data-table-component slot="subComponent">
-
-        </data-table-component>
-        
-        <!--  <graph-component slot="subComponent">
-        </graph-component> -->
+        <data-table-component slot="subComponent"></data-table-component>
+        <graph-component slot="subComponent" type="line"></graph-component>
     </usgs-component>
-
-    <!-- <test-component></test-component> -->
 </body>
 
 </html>
