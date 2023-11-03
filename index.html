@@ -65,9 +65,13 @@
 
 <body>
     <usgs-component startDate="10/10/2023" endDate="10/10/2023">
-        <data-table-component slot="subComponent"></data-table-component>
-        <graph-component slot="subComponent" type="line"></graph-component>
+        <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
+        <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
     </usgs-component>
+    <fema-component startDate="10/10/2023" endDate="10/10/2023">
+        <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
+        <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
+    </fema-component>
 </body>
 
 </html>
