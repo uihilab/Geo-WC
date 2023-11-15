@@ -13,6 +13,7 @@
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
     <script type="module" src="./lib/visualize/dataTableComponent.js"></script>
     <script type="module" src="./lib/visualize/graphComponent.js"></script>
+    <script type="module" src="./lib/output/outputComponent.js"></script>
     <title>GeoWebComponent</title>
 
 </head>
@@ -21,7 +22,7 @@
     <div id="jsonData"></div>
 </template>
 
-<template id="usgs-component-template">
+<template id="generic-component-template">
     <form>
         <label for="url">Source URL:</label>
         <input type="url" id="source_url" required>
@@ -37,41 +38,42 @@
 
         <button id="captureScreenshot">Capture Screenshot</button>
     </form>
-
-    <script>
-
-        // const captureButton = document.getElementById('captureScreenshot');
-        // const screenshotContainer = document.getElementById('screenshotContainer');
-
-        // captureButton.addEventListener('click', () => {
-
-        //     const sourceUrl = document.getElementById('source_url').value;
-        //     const startDate = document.getElementById('start_date').value;
-        //     const finishDate = document.getElementById('finish_date').value;
-
-        //     sourceUrl.textContent = sourceUrl;
-        //     startDate.textContent = startDate;
-        //     finishDate.textContent = finishDate;
-        //     // Create a screenshot using html2canvas
-        // });
-    </script>
     <slot name="subComponent"></slot>
 </template>
 
 <template id="fema-component-template">
-
     <slot name="subComponent"></slot>
 </template>
 
 <body>
-    <usgs-component startDate="10/10/2023" endDate="10/10/2023">
-        <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
-        <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
+    <usgs-component id="usgs" startDate="10/10/2023" endDate="10/10/2023">
+        <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
+        <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
+        <output-component slot="subComponent" type="json"></output-component>
+        <output-component slot="subComponent" type="csv"></output-component>
     </usgs-component>
     <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
         <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
         <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
     </fema-component> -->
+
+    <script>
+        function changeAttribute(componentId, attributeName, newValue) {
+            // Assuming your web component has an ID
+            var component = document.getElementById(componentId);
+
+            // Check if the component with the given ID exists
+            if (component) {
+                // Change the value of the attribute
+                component.setAttribute(attributeName, newValue);
+
+                // You can also log the updated value to the console
+                //console.log(`Updated ${attributeName} attribute to: ${newValue}`);
+            } else {
+                console.error(`Component with ID ${componentId} not found.`);
+            }
+        }
+    </script>
 </body>
 
 </html>
