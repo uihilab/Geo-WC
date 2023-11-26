@@ -1,0 +1,109 @@
+// IndexedDB module
+const IndexedDBModule = (function () {
+  const DB_NAME = 'GeoWebComponent';
+  const DB_VERSION = 1;
+
+  // Open a connection to the database
+  const openDatabase = () => {
+    return new Promise((resolve, reject) => {
+      const request = window.indexedDB.open(DB_NAME, DB_VERSION);
+
+      request.onerror = (event) => {
+        reject(`Error opening database: ${event.target.error}`);
+      };
+
+      request.onsuccess = (event) => {
+        resolve(event.target.result);
+      };
+
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+
+        // Create an object store (table) if it doesn't exist
+        const objectStore = db.createObjectStore('yourTableName', { keyPath: 'key' });
+
+        // You can add additional index definitions if needed
+        // objectStore.createIndex('indexName', 'fieldName', { unique: false });
+      };
+    });
+  };
+
+  // Add an object to the database
+  const addObject = (table, object) => {
+    return openDatabase().then((db) => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction([table], 'readwrite');
+        const objectStore = transaction.objectStore(table);
+        const request = objectStore.add(object);
+
+        request.onerror = (event) => {
+          reject(`Error adding object: ${event.target.error}`);
+        };
+
+        request.onsuccess = (event) => {
+          resolve('Object added successfully');
+        };
+      });
+    });
+  };
+
+  // Get an object from the database by key
+  const getObjectByKey = (table, key) => {
+    return openDatabase().then((db) => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction([table], 'readonly');
+        const objectStore = transaction.objectStore(table);
+        const request = objectStore.get(key);
+
+        request.onerror = (event) => {
+          reject(`Error getting object: ${event.target.error}`);
+        };
+
+        request.onsuccess = (event) => {
+          resolve(event.target.result);
+        };
+      });
+    });
+  };
+
+  // Delete an object from the database by key
+  const deleteObjectByKey = (table, key) => {
+    return openDatabase().then((db) => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction([table], 'readwrite');
+        const objectStore = transaction.objectStore(table);
+        const request = objectStore.delete(key);
+
+        request.onerror = (event) => {
+          reject(`Error deleting object: ${event.target.error}`);
+        };
+
+        request.onsuccess = (event) => {
+          resolve('Object deleted successfully');
+        };
+      });
+    });
+  };
+
+  return {
+    addObject,
+    getObjectByKey,
+    deleteObjectByKey,
+  };
+})();
+
+// Example usage:
+/*const exampleObject = { key: 'yourKey', data: 'yourData' };
+const exampleTableName = 'yourTableName';
+
+IndexedDBModule.addObject(exampleTableName, exampleObject)
+  .then((message) => console.log(message))
+  .catch((error) => console.error(error));
+
+IndexedDBModule.getObjectByKey(exampleTableName, 'yourKey')
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+
+IndexedDBModule.deleteObjectByKey(exampleTableName, 'yourKey')
+  .then((message) => console.log(message))
+  .catch((error) => console.error(error)); */

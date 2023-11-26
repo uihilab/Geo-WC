@@ -46,7 +46,10 @@
 </template>
 
 <body>
-    <usgs-component id="usgs" startDate="10/10/2023" endDate="10/10/2023">
+    <usgs-component id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/">
+        <api-arguments site="USGS:02056000" format="json" startDt="2023-11-01" endDt="2023-11-01"
+            parameterCd="00060"></api-arguments>
+        <fields keep='["dateTime", "value"]'></fields>
         <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
         <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
         <output-component slot="subComponent" type="json"></output-component>
