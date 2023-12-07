@@ -41,30 +41,30 @@
 </template>
 
 <body>
-    <geoweb-usgs id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
-        <api-arguments-raw site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
-            parameterCd="00060"></api-arguments-raw>
-        <!-- <api-arguments startDate="2023-11-01" timeInterval="1d"></api-arguments> -->
-        <geoweb-graph slot="subComponent"></goeweb-graph>
+    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
+        <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
+            parameterCd="00060"></api-args>
+        <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
+        <geoweb-graph slot="subComponent"></geoweb-graph>
         <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
         <!-- <fields keep='["dateTime", "value"]'></fields> -->
         <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
         <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
         <geoweb-output slot="subComponent" type="json"></geoweb-output>
         <geoweb-output slot="subComponent" type="csv"></geoweb-output>
-    </geoweb-usgs>
-    <geoweb-usgs id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
+    </usgs-ml>
+    <usgs-ml id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
         <api-arguments-raw site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
             parameterCd="00060"></api-arguments-raw>
         <!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
         <geoweb-graph slot="subComponent"></goeweb-graph>
-        <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
-        <!-- <fields keep='["dateTime", "value"]'></fields> -->
-        <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
-        <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
-        <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
+            <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
+            <!-- <fields keep='["dateTime", "value"]'></fields> -->
+            <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
+            <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
+            <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
         <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
-    </geoweb-usgs>
+    </usgs-ml>
     <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
         <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
         <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
