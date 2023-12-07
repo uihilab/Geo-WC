@@ -5,15 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Include Chart.js via CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- <script type="module" src="./lib/test.js"></script> -->
-    <!-- <script type="module" src="shadowDOM.js"></script> -->
+    <!-- Include Chart.js via CDN
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
-    <script type="module" src="./lib/visualize/dataTableComponent.js"></script>
-    <script type="module" src="./lib/visualize/graphComponent.js"></script>
-    <script type="module" src="./lib/output/outputComponent.js"></script>
     <title>GeoWebComponent</title>
 
 </head>
@@ -23,7 +17,8 @@
 </template>
 
 <template id="generic-component-template">
-    <form>
+    GEO Web Component
+    <!-- <form>
         <label for="url">Source URL:</label>
         <input type="url" id="source_url" required>
         <br><br>
@@ -37,7 +32,7 @@
         <br><br>
 
         <button id="captureScreenshot">Capture Screenshot</button>
-    </form>
+    </form> -->
     <slot name="subComponent"></slot>
 </template>
 
@@ -46,16 +41,29 @@
 </template>
 
 <body>
-    <geoweb-usgs id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/">
+    <geoweb-usgs id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
         <api-arguments-raw site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-arguments-raw>
-        <api-arguments startDate="2023-11-01" timeInterval="1d"></api-arguments>
+        <!-- <api-arguments startDate="2023-11-01" timeInterval="1d"></api-arguments> -->
+        <geoweb-graph slot="subComponent"></goeweb-graph>
+        <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
+        <!-- <fields keep='["dateTime", "value"]'></fields> -->
+        <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
+        <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
+        <geoweb-output slot="subComponent" type="json"></geoweb-output>
+        <geoweb-output slot="subComponent" type="csv"></geoweb-output>
+    </geoweb-usgs>
+    <geoweb-usgs id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
+        <api-arguments-raw site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
+            parameterCd="00060"></api-arguments-raw>
+        <!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
+        <geoweb-graph slot="subComponent"></goeweb-graph>
+        <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
         <!-- <fields keep='["dateTime", "value"]'></fields> -->
         <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
         <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
         <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
         <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
-        <goeweb-table></goeweb-table>
     </geoweb-usgs>
     <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
         <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>

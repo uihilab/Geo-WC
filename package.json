@@ -1,0 +1,25 @@
+{
+  "name": "geowebcomponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uihilab/GeoWebComponent.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uihilab/GeoWebComponent/issues"
+  },
+  "homepage": "https://github.com/uihilab/GeoWebComponent#readme",
+  "devDependencies": {
+    "eslint": "^8.55.0"
+  }
+}
