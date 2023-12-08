@@ -41,22 +41,25 @@
 </template>
 
 <body>
-    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
+    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
+        clear-cache="true">
         <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
         <geoweb-graph></geoweb-graph>
-        <geoweb-table></goeweb-table> 
+        <!-- <geoweb-table></goeweb-table>-->
         <!-- <fields keep='["dateTime", "value"]'></fields> -->
         <!-- <data-table-component showHeaders="true"></data-table-component> -->
         <!-- <graph-component type="line" xTitle="true"></graph-component> -->
-        <geoweb-output  type="json"></geoweb-output>
+        <geoweb-output type="json"></geoweb-output>
         <geoweb-output type="csv"></geoweb-output>
     </usgs-ml>
-    <usgs-ml id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
-        <api-arguments-raw site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
-            parameterCd="00060"></api-arguments-raw>
-        <!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
+
+    <usgs-ml id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
+        clear-cache="true">
+        <api-args raw="true" site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
+            parameterCd="00060"></api-args>
+        <!-- <api-args startDate="2023-11-02" timeInterval="1d"></api-args> -->
         <geoweb-graph></goeweb-graph>
             <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
             <!-- <fields keep='["dateTime", "value"]'></fields> -->
@@ -65,9 +68,9 @@
             <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
         <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
     </usgs-ml>
-    <fema-ml id="fema" service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true">
-        <api-args raw="true" state="CA" startDt="2023-11-01" endDt="2023-11-01"
-            parameterCd="00060"></api-args>
+    <fema-ml id="fema" service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
+        clear-cache="true">
+        <api-args raw="true" state="CA" startDt="2023-11-01" endDt="2023-11-01" parameterCd="00060"></api-args>
 
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
         <!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
@@ -78,29 +81,53 @@
             <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
             <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
         <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
-    </usgs-ml>
-    <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
+            </usgs-ml>
+            <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
         <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
         <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
     </fema-component> -->
 
-    <script>
-        function changeAttribute(componentId, attributeName, newValue) {
-            // Assuming your web component has an ID
-            var component = document.getElementById(componentId);
+            <script>
+                function changeAttribute(componentId, attributeName, newValue) {
+                    // Assuming your web component has an ID
+                    var component = document.getElementById(componentId);
 
-            // Check if the component with the given ID exists
-            if (component) {
-                // Change the value of the attribute
-                component.setAttribute(attributeName, newValue);
+                    // Check if the component with the given ID exists
+                    if (component) {
+                        // Change the value of the attribute
+                        component.setAttribute(attributeName, newValue);
 
-                // You can also log the updated value to the console
-                //console.log(`Updated ${attributeName} attribute to: ${newValue}`);
-            } else {
-                console.error(`Component with ID ${componentId} not found.`);
-            }
-        }
-    </script>
+                        // You can also log the updated value to the console
+                        //console.log(`Updated ${attributeName} attribute to: ${newValue}`);
+                    } else {
+                        console.error(`Component with ID ${componentId} not found.`);
+                    }
+                }
+            </script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Find all elements with 'clear-cache' attribute
+                    var elementsWithClearCache = document.querySelectorAll('[clear-cache="true"]');
+
+                    elementsWithClearCache.forEach(function (element) {
+                        // Get the ID attribute of the current element
+                        var elementId = element.getAttribute('id');
+                        debugger;
+                        if (elementId) {
+                            var userInputElement = document.getElementById(elementId);
+
+                            if (userInputElement) {
+                                debugger;
+                                console.log('Cache cleared for element with ID:', elementId);
+                                // Örnek olarak localStorage'tan temizleme
+                                localStorage.clear();
+                            };
+                        }
+                    })
+                });
+            </script>
+
 </body>
 
 </html>
