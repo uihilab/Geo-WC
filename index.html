@@ -86,26 +86,9 @@
         <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
         <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
     </fema-component> -->
-
-            <script>
-                function changeAttribute(componentId, attributeName, newValue) {
-                    // Assuming your web component has an ID
-                    var component = document.getElementById(componentId);
-
-                    // Check if the component with the given ID exists
-                    if (component) {
-                        // Change the value of the attribute
-                        component.setAttribute(attributeName, newValue);
-
-                        // You can also log the updated value to the console
-                        //console.log(`Updated ${attributeName} attribute to: ${newValue}`);
-                    } else {
-                        console.error(`Component with ID ${componentId} not found.`);
-                    }
-                }
-            </script>
-
-            <script>
+            
+            
+           <!-- <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     // Find all elements with 'clear-cache' attribute
                     var elementsWithClearCache = document.querySelectorAll('[clear-cache="true"]');
@@ -126,8 +109,7 @@
                         }
                     })
                 });
-            </script>
-
+            </script> -->
 </body>
 
 </html>
