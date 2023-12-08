@@ -2,5 +2,5 @@
 2. Cache flush, reset etc. functions or parameters
 3. Map
 4. https://www.weather.gov/owp/operations https://maps.water.noaa.gov/server/rest/services/nwm
-5. remove slot
-6. id="usgs2", use a random generated id
+5. remove slot /
+6. id="usgs2", use a random generated id / ok
