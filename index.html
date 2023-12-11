@@ -5,40 +5,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Include Chart.js via CDN
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>GeoWebComponent</title>
-
 </head>
-
+<!-- 
 <template id="dynamic-component-template">
     <div id="jsonData"></div>
+</template>
+<template id="table-component-template">
+    <div id="table">This is table</div>
 </template>
 
 <template id="generic-component-template">
     GEO Web Component
-    <!-- <form>
-        <label for="url">Source URL:</label>
-        <input type="url" id="source_url" required>
-        <br><br>
-
-        <label for="sdate">Start Date:</label>
-        <input type="date" id="start_date" required>
-        <br><br>
-
-        <label for="fdate">Finish Date:</label>
-        <input type="date" id="finish_date" required>
-        <br><br>
-
-        <button id="captureScreenshot">Capture Screenshot</button>
-    </form> -->
     <slot name="subComponent"></slot>
 </template>
 
 <template id="fema-component-template">
     <slot name="subComponent"></slot>
-</template>
+</template> -->
 
 <body>
     <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
@@ -46,70 +32,11 @@
         <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
-        <geoweb-graph></geoweb-graph>
-        <!-- <geoweb-table></goeweb-table>-->
-        <!-- <fields keep='["dateTime", "value"]'></fields> -->
-        <!-- <data-table-component showHeaders="true"></data-table-component> -->
-        <!-- <graph-component type="line" xTitle="true"></graph-component> -->
+        <geoweb-table></geoweb-table>
         <geoweb-output type="json"></geoweb-output>
         <geoweb-output type="csv"></geoweb-output>
     </usgs-ml>
 
-    <usgs-ml id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
-        clear-cache="true">
-        <api-args raw="true" site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
-            parameterCd="00060"></api-args>
-        <!-- <api-args startDate="2023-11-02" timeInterval="1d"></api-args> -->
-        <geoweb-graph></goeweb-graph>
-            <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
-            <!-- <fields keep='["dateTime", "value"]'></fields> -->
-            <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
-            <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
-            <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
-        <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
-    </usgs-ml>
-    <fema-ml id="fema" service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
-        clear-cache="true">
-        <api-args raw="true" state="CA" startDt="2023-11-01" endDt="2023-11-01" parameterCd="00060"></api-args>
-
-        <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
-        <!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
-        <geoweb-graph></goeweb-graph>
-            <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
-            <!-- <fields keep='["dateTime", "value"]'></fields> -->
-            <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
-            <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
-            <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
-        <geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
-            </usgs-ml>
-            <!-- <fema-component startDate="10/10/2023" endDate="10/10/2023">
-        <data-table-component slot="subComponent" showHeaders="true" ></data-table-component>
-        <graph-component slot="subComponent" type="line" xTitle="true"></graph-component>
-    </fema-component> -->
-            
-            
-           <!-- <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Find all elements with 'clear-cache' attribute
-                    var elementsWithClearCache = document.querySelectorAll('[clear-cache="true"]');
-
-                    elementsWithClearCache.forEach(function (element) {
-                        // Get the ID attribute of the current element
-                        var elementId = element.getAttribute('id');
-                        debugger;
-                        if (elementId) {
-                            var userInputElement = document.getElementById(elementId);
-
-                            if (userInputElement) {
-                                debugger;
-                                console.log('Cache cleared for element with ID:', elementId);
-                                // Örnek olarak localStorage'tan temizleme
-                                localStorage.clear();
-                            };
-                        }
-                    })
-                });
-            </script> -->
 </body>
 
 </html>

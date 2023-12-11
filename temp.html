@@ -1,0 +1,28 @@
+
+<usgs-ml id="usgs2" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
+clear-cache="true">
+<api-args raw="true" site="USGS:02056000" startDt="2023-11-02" endDt="2023-11-02"
+    parameterCd="00060"></api-args>
+<!-- <api-args startDate="2023-11-02" timeInterval="1d"></api-args> -->
+<geoweb-graph></goeweb-graph>
+    <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
+    <!-- <fields keep='["dateTime", "value"]'></fields> -->
+    <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
+    <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
+    <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
+<geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
+</usgs-ml>
+<fema-ml id="fema" service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
+clear-cache="true">
+<api-args raw="true" state="CA" startDt="2023-11-01" endDt="2023-11-01" parameterCd="00060"></api-args>
+
+<api-args startDate="2023-11-01" timeInterval="1d"></api-args>
+<!-- <api-arguments startDate="2023-11-02" timeInterval="1d"></api-arguments> -->
+<geoweb-graph></goeweb-graph>
+    <!-- <geoweb-table slot="subComponent"></goeweb-table> -->
+    <!-- <fields keep='["dateTime", "value"]'></fields> -->
+    <!-- <data-table-component slot="subComponent" showHeaders="true"></data-table-component> -->
+    <!-- <graph-component slot="subComponent" type="line" xTitle="true"></graph-component> -->
+    <!-- <geoweb-output slot="subComponent" type="json"></geoweb-output>
+<geoweb-output slot="subComponent" type="csv"></geoweb-output> -->
+</fema-ml>
