@@ -21,5 +21,9 @@
   "homepage": "https://github.com/uihilab/GeoWebComponent#readme",
   "devDependencies": {
     "eslint": "^8.55.0"
+  },
+  "dependencies": {
+    "datatables.net": "^1.13.8",
+    "datatables.net-dt": "^1.13.8"
   }
 }
