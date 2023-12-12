@@ -6,24 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
+    <script type="module" src="./lib/visualize/mapComponent.js"></script>
     <title>GeoWebComponent</title>
 </head>
-<!-- 
-<template id="dynamic-component-template">
-    <div id="jsonData"></div>
-</template>
-<template id="table-component-template">
-    <div id="table">This is table</div>
-</template>
-
-<template id="generic-component-template">
-    GEO Web Component
-    <slot name="subComponent"></slot>
-</template>
-
-<template id="fema-component-template">
-    <slot name="subComponent"></slot>
-</template> -->
 
 <body>
     <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
@@ -31,13 +16,12 @@
         <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
-        <geoweb-graph></geoweb-graph>
-        <geoweb-table></geoweb-table>
-        <geoweb-table></geoweb-table>
-        <geoweb-output type="json"></geoweb-output>
-        <geoweb-output type="csv"></geoweb-output>
+        <geoweb-map></geoweb-map>
+        <!--- <geoweb-graph></geoweb-graph> -->  
+        <geoweb-table></geoweb-table> 
+        <!-- <geoweb-output type="json"></geoweb-output>
+        <geoweb-output type="csv"></geoweb-output> -->
     </usgs-ml>
-
 </body>
 
 </html>
