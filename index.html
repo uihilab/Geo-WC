@@ -6,13 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
-    <script type="module" src="./lib/visualize/mapComponent.js"></script>
     <title>GeoWebComponent</title>
 </head>
 
 <body>
-    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="true"
-        clear-cache="true">
+    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/">
+        <cache duration="1h" clear="true"></cache>
         <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
