@@ -10,13 +10,12 @@
 </head>
 
 <body>
-    <usgs-ml id="usgs" service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/">
-        <cache duration="1h" clear="true"></cache>
+    <usgs-ml service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
         <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
             parameterCd="00060"></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
         <geoweb-map></geoweb-map>
-        <!--- <geoweb-graph></geoweb-graph> -->  
+        <geoweb-graph></geoweb-graph> 
         <geoweb-table></geoweb-table> 
         <!-- <geoweb-output type="json"></geoweb-output>
         <geoweb-output type="csv"></geoweb-output> -->
