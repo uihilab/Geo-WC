@@ -5,21 +5,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
+    <script type="module" src="./lib/fema/femaComponent.js"></script>
     <title>GeoWebComponent</title>
 </head>
 
 <body>
-    <usgs-ml service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
-        <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
-            parameterCd="00060"></api-args>
+    <!-- service="instant-values" -->
+    <!-- service="site" -->
+        <!-- <usgs-ml service="site" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+            <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
+                parameterCd="00060"></api-args>
+            <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
+            <geoweb-map></geoweb-map>
+            <geoweb-graph></geoweb-graph> 
+            <geoweb-table></geoweb-table> 
+            <geoweb-output type="json"></geoweb-output>
+            <geoweb-output type="csv"></geoweb-output> 
+        </usgs-ml> 
+    -->
+    <fema-ml service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+        <api-args raw="true" fipsStateCode=19></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
         <geoweb-map></geoweb-map>
-        <geoweb-graph></geoweb-graph> 
+       <!-- <geoweb-graph></geoweb-graph> 
         <geoweb-table></geoweb-table> 
-        <!-- <geoweb-output type="json"></geoweb-output>
+         <geoweb-output type="json"></geoweb-output>
         <geoweb-output type="csv"></geoweb-output> -->
-    </usgs-ml>
+    </fema-ml>
 </body>
 
 </html>
