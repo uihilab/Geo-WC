@@ -7,35 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type="module" src="./lib/usgs/usgsComponent.js"></script>
     <script type="module" src="./lib/fema/femaComponent.js"></script>
+    <script type="module" src="./lib/nws/nwsComponent.js"></script>
+    <script type="module" src="./lib/epa/epaComponent.js"></script>
     <title>GeoWebComponent</title>
 </head>
 
 <body>
     <!-- service="instant-values" -->
     <!-- service="site" -->
-        <!-- <usgs-ml service="site" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+    <!--  <usgs-ml service="instant-values" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
             <api-args raw="true" site="USGS:02056000" startDt="2023-11-01" endDt="2023-11-01"
-                parameterCd="00060"></api-args>
+            parameterCd="00060"></api-args>
             <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
-            <geoweb-map></geoweb-map>
+           <geoweb-map></geoweb-map>
             <geoweb-graph></geoweb-graph> 
             <geoweb-table></geoweb-table> 
             <geoweb-output type="json"></geoweb-output>
             <geoweb-output type="csv"></geoweb-output> 
-        </usgs-ml> 
-    -->
-    <fema-ml service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+        </usgs-ml>  -->
+
+    <!--  <fema-ml service="disaster-declarations" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
         <api-args raw="true" fipsStateCode=19></api-args>
         <api-args startDate="2023-11-01" timeInterval="1d"></api-args>
-        <geoweb-map></geoweb-map>
-       <!-- <geoweb-graph></geoweb-graph> 
         <geoweb-table></geoweb-table> 
-         <geoweb-output type="json"></geoweb-output>
-        <geoweb-output type="csv"></geoweb-output> -->
-    </fema-ml>
+        <geoweb-map></geoweb-map>
+        <geoweb-output type="json"></geoweb-output>
+        <geoweb-output type="csv"></geoweb-output> 
+    </fema-ml> -->
+
+    <!-- service="gridpoints" 
+       <nws-ml service="gridpoints" placeHolder ="true" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+         <api-args raw="true" gridX=31 gridY=80 office="TOP" ></api-args>
+        <geoweb-map></geoweb-map>
+    </nws-ml> -->
+
+    <!-- service="stations" 
+    <nws-ml service="stations" placeHolder="false" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+        <api-args raw="true" limit=100></api-args>
+        <geoweb-map></geoweb-map>
+    </nws-ml>
+    -->
+
+    <epa-ml service="station" proxy="https://hydroinformatics.uiowa.edu/lab/cors/" cache="false">
+        <api-args raw="true" bBox="-96.789,40.580,-89.802,43.564" characteristicName="Nitrogen" countycode="US:24:033" ></api-args>
+        <geoweb-map></geoweb-map>
+    </epa-ml>
 </body>
 
 </html>

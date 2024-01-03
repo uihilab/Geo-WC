@@ -20,6 +20,7 @@ import stats from "../analyze/components/stats.js";
  */
 
 function retrieve({ params, args, data } = {}) {
+  debugger;
   //obtain data from parameters set by user.
   var source = params["source"],
     dataType = params["datatype"],
@@ -97,7 +98,11 @@ function retrieve({ params, args, data } = {}) {
             : datasources.envelope(dataSource["body"]());
       return env;
     })();
+    
+    console.log(args);
 
+   debugger;
+    
   endpoint = placeHolder ? endpoint.replace(/{(\w+)}/g, (match, key) => args[key]) : endpoint
 
   return new Promise((resolve, reject) => {
