@@ -130,15 +130,13 @@ Geo-WC is not limited to the agencies and data types/formats implemented, but ra
 - Agencies in different scientific fields will be added to the framework.
 - Different data types/formats will be added to the framework.
 - Includes a limited set of subcomponents, including a graph, table, export and map. 
-- 
 
 # License
 This project is licensed under the MIT License - see the  **[LICENSE](https://github.com/uihilab/Geo-WC/blob/main/LICENSE)**  file for details.
 
 # Acknowledgements
-This project is developed by the University of Iowa Hydroinformatics Lab (UIHI Lab):
-
-https://hydroinformatics.uiowa.edu/.
+This project is developed by  **[the University of Iowa Hydroinformatics Lab (UIHI Lab)](https://hydroinformatics.uiowa.edu/)**
+and is supported by **[ Sakarya University](https://cs.sakarya.edu.tr/)**, Turkiye. 
 
 
 
