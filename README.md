@@ -138,16 +138,5 @@ This project is licensed under the MIT License - see the  **[LICENSE](https://gi
 This project is developed by  **[the University of Iowa Hydroinformatics Lab (UIHI Lab)](https://hydroinformatics.uiowa.edu/)**
 and is supported by **[ Sakarya University](https://cs.sakarya.edu.tr/)**, Turkiye. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# References
+Kaynak, S., Kaynak, B., Erazo Ramirez, C., & Demir, I. (2024). Geo-WC: Custom Web Components for Earth Science Organizations and Agencies. EarthArXiv. [doi:10.31223/X5FX2H](https://doi.org/10.31223/X5FX2H)
